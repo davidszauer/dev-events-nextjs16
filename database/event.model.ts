@@ -240,12 +240,12 @@ eventSchema.pre<IEvent>('save', async function () {
   }
 });
 
-// Create unique index on slug for faster lookups
-eventSchema.index({ slug: 1 }, { unique: true });
-
 /**
  * Event model
  * Exported for use throughout the application
+ * Note: Unique index on slug is automatically created via unique: true in schema
  */
 export const Event: Model<IEvent> =
   mongoose.models.Event || mongoose.model<IEvent>('Event', eventSchema);
+
+  export default Event;
